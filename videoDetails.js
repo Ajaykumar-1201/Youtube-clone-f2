@@ -3,7 +3,12 @@ const url = "https://www.googleapis.com/youtube/v3/commentThreads";
 const commentsContainer = document.getElementById("comments-container");
 
 window.addEventListener("load", () => {
-  let videoId = document.cookie.split("=")[1];
+  const queryString = window.location.search;
+
+const urlParams = new URLSearchParams(queryString);
+
+const videoId = urlParams.get("id");
+console.log(videoId);
 
   if (YT) {
     new YT.Player("video-placeholder", {
